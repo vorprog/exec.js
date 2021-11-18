@@ -1,0 +1,25 @@
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+name: publish-package
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - package.json # Only initiate pipeline when package version is changed
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }} # actions/setup-node@v2 uses NODE_AUTH_TOKEN by default
+jobs:
+  publish:
+    defaults:
+      run:
+        shell: bash -ex {0} # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#custom-shell
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # https://github.com/actions/checkout/blob/main/action.yml
+      - uses: actions/setup-node@v2 # https://github.com/actions/setup-node/blob/main/action.yml
+        with:
+          registry-url: https://registry.npmjs.org
+      - run: |
+          npm install
+          npm run tests
+          npm publish --access public

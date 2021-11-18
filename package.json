@@ -1,0 +1,13 @@
+{
+  "name": "@vorprog/new-package",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "license": "ISC",
+  "scripts": {
+    "tests": "node tests/test.js"
+  },
+  "devDependencies": {
+    "@vorprog/loop": "^1.0.0",
+    "diff": "^5.0.0"
+  }
+}
