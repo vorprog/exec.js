@@ -27,5 +27,5 @@ exec.setDefaultOptions({
   ]
 });
 
-const commandResult2 = exec.exec(`echo "Hello World! The secrets are pass1234 and az190-#%$^&{}*!@=+?<>//"`);
-testStrings(`test#2`,`Hello World! The secrets are pass1234 and az190-#%$^&{}*!@=+?<>//`, commandResult2);
+const commandResult2 = exec.exec(`echo "Hello World! The first secret is pass1234. All secrets: pass1234, az190-#%$^&{}*!@=+?<>//"`);
+testStrings(`test#2`,`Hello World! The first secret is pass1234. All secrets: pass1234, az190-#%$^&{}*!@=+?<>//`, commandResult2);

@@ -3,7 +3,7 @@ const loop = require('@vorprog/loop').loop;
 
 /** @param {string} content @param {string[]} secrets @returns {string} */
 const scrub = (content, secrets) => {
-  loop(secrets, (index, secret) => content = content.replaceAll(secret, `****REDACTED****`));
+  loop(secrets, (index, secret) => { while(content.includes(secret)) content = content.replace(secret, `****REDACTED****`); })
   return content;
 };
 
