@@ -18,15 +18,14 @@ const testStrings = (testName, expected, actual) => {
 };
 
 const commandResult1 = exec.exec(`echo "hello world"`);
-
 testStrings(`test#1`, `hello world`, commandResult1);
 
 exec.setDefaultOptions({
-  secrets: [`pass1234`, `\\az190-#%$^&{}*!@=+?<>//`],
+  secrets: [`pass1234`, `az190-#%$^&{}*!@=+?<>//`],
   ignorableErrors: [
     `An error occurred (EntityAlreadyExists)`,
   ]
 });
 
-const commandResult2 = exec.exec(`echo "Hello World! The secrets are pass1234 and \\az190-#%$^&{}*!@=+?<>//"`);
-testStrings(`test#2`,`Hello World! The secrets are ****REDACTED**** and ****REDACTED****`, commandResult2);
+const commandResult2 = exec.exec(`echo "Hello World! The secrets are pass1234 and az190-#%$^&{}*!@=+?<>//"`);
+testStrings(`test#2`,`Hello World! The secrets are pass1234 and az190-#%$^&{}*!@=+?<>//`, commandResult2);
